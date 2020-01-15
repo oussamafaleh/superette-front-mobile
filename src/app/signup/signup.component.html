@@ -1,0 +1,90 @@
+<div class="login-page" [@routerTransition]>
+    <div class="row no-gutters vh-100 proh bg-template">
+        <img src="assets/images/apple.png" alt="logo" class="apple right-image
+            align-self-center">
+        <div class="col align-self-center px-3 text-center">
+            <img src="assets/images/logo.png" alt="logo" class="logo-small">
+            <h2 class="text-white"><span class="font-weight-light">Sign</span>Up</h2>
+            <form class="form-signin shadow">
+
+                <div class="form-group float-label active">
+                    <input name="firstname" [(ngModel)]="postData.firstname"
+                        type="text" class="form-control" required
+                        value="Ammy">
+                    <label class="form-control-label">firstname</label>
+                </div>
+
+                <div class="form-group float-label active">
+                    <input name="lastname" [(ngModel)]="postData.lastname"
+                        type="text" class="form-control" required
+                        value="Ammy">
+                    <label class="form-control-label">lastname</label>
+                </div>
+
+                <div class="form-group float-label active">
+                    <input name="localisation" [(ngModel)]="postData.localisation"
+                        type="text" class="form-control" required
+                        value="00.00.00.00">
+                    <label class="form-control-label">localisation</label>
+                </div>
+
+                <div class="form-group float-label">
+                    <input name="phone" [(ngModel)]="postData.phone"
+                        type="number" id="inputPhone" class="form-control"
+                        required required minlength="8">
+                    <label for="inputPassword" class="form-control-label">phone
+                        </label>
+                </div>
+
+
+                <div class="form-group float-label active">
+                    <input 
+                        name="mail" [(ngModel)]="postData.mail"
+                        type="email" id="inputEmail" class="form-control"
+                        value="ammyjohnson@maxartkiller.co"
+                        required autofocus>
+                    <label for="inputEmail" class="form-control-label">Email
+                        address</label>
+                </div>
+
+
+                <div class="form-group float-label active">
+                    <input name="gender" [(ngModel)]="postData.gender"
+                        type="text" class="form-control" required
+                        value="">
+                    <label class="form-control-label">gender</label>
+                </div>
+                Bearer
+               
+                
+
+               
+                <div class="form-group my-4 text-left">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input"
+                            id="rememberme">
+                        <label class="custom-control-label" for="rememberme">I
+                            accept <a href="#">Terms and
+                                Condition</a></label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-auto">
+                        <a (click)="signAction()" [routerLinkActive]="['active']"
+                            class="btn btn-lg btn-default btn-rounded shadow"><span>SignUp</span>                             
+                                <i
+                                class="material-icons">arrow_forward</i></a>
+                    </div>                  
+                </div>
+
+            </form>
+            
+            <p class="text-center text-white">
+                Already have account?<br>
+                <a routerLink="/login" [routerLinkActive]="['active']">Sign In</a>
+                here.
+            </p>
+        </div>
+    </div>
+</div>

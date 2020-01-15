@@ -1,0 +1,8 @@
+{
+  "name": "GoMobileUX-Angular-Starterkit",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}
