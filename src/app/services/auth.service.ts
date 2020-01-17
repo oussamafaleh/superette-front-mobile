@@ -18,7 +18,11 @@ export class AuthService {
         private storageService: StorageService,
         private router: Router
     ) {}
-
+    
+    gettoken() {
+        return this.httpService.post1('authenticate', AuthConstants.TOKEN);
+    }
+    
     getUserData() {
         this.storageService.get(AuthConstants.AUTH).then(res => {
         this.userData$.next(res);

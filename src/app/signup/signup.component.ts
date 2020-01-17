@@ -5,6 +5,8 @@ import { AuthConstants } from './../config/auth-constants';
 import { AuthService } from './../services/auth.service';
 import { StorageService } from './../services/storage.service';
 import { ToastService } from './../services/toast.service';
+//import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
+
 
 
 @Component({
@@ -24,13 +26,16 @@ export class SignupComponent implements OnInit {
         gender: '',
         password: ''
     };
+ 
 
     constructor(
         private authService: AuthService,
         private toastService: ToastService,
         private storageService: StorageService,
-        private router: Router
+        private router: Router,
+       // private fb: Facebook
     ) { }
+
     ngOnInit() {
         (document.querySelector('.loader-screen') as HTMLElement).style.display = 'none';
     }
@@ -39,7 +44,7 @@ export class SignupComponent implements OnInit {
         let firstname = this.postData.firstname.trim();
         let lastname = this.postData.lastname.trim();
         let localisation = this.postData.localisation.trim();
-       
+
         let mail = this.postData.mail.trim();
         let gender = this.postData.gender.trim();
         let password = this.postData.password.trim();
@@ -57,7 +62,7 @@ export class SignupComponent implements OnInit {
             firstname.length > 0 &&
             lastname.length > 0 &&
             localisation.length > 0 &&
-          
+
             mail.length > 0 &&
             gender.length > 0 &&
             password.length > 0
@@ -93,5 +98,11 @@ export class SignupComponent implements OnInit {
             );
         }
     }
+
+     /*this.fb.login(['public_profile', 'user_friends', 'email'])
+    .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
+    .catch(e => console.log('Error logging into Facebook', e));
+     this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);*/
+
 
 }
