@@ -5,7 +5,7 @@ const { Storage } = Plugins;
     providedIn: 'root'
 })
 export class StorageService {
-    constructor() { }
+    constructor() {}
 
     // Store the value
     async store(storageKey: string, value: any) {

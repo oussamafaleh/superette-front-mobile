@@ -12,6 +12,7 @@ providedIn: 'root'
 
 export class AuthService {
     userData$ = new BehaviorSubject<any>([]);
+   
 
     constructor(
         private httpService: HttpService,
@@ -19,10 +20,11 @@ export class AuthService {
         private router: Router
     ) {}
     
+   
     gettoken() {
         return this.httpService.post1('authenticate', AuthConstants.TOKEN);
-    }
-    
+   }
+   
     getUserData() {
         this.storageService.get(AuthConstants.AUTH).then(res => {
         this.userData$.next(res);
