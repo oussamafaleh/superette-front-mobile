@@ -32,7 +32,7 @@ export class AuthService {
      }
 
     login(postData: any): Observable<any> {
-        return this.httpService.post('login', postData);
+        return this.httpService.post('mobile/market/login', postData);
     }
 
     signup(postData: any): Observable<any> {

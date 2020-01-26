@@ -26,7 +26,6 @@ export class AppComponent implements OnInit {
     this.storageService.get(AuthConstants.EXPIRE_IN).then(res => {
       setInterval(() => {
         this.setJwt();
-       console.log("jj");
       }, res*1000);
     });
   }
@@ -35,13 +34,12 @@ export class AppComponent implements OnInit {
     this.authService.gettoken().subscribe(
       ////////////////////////////////////
       (res: any) => {
+        
         if (res) {
           // Storing the jwt and the time expire.
+          
           this.storageService.store(AuthConstants.JWT, res.results.jwt);
-          this.storageService.store(
-            AuthConstants.EXPIRE_IN,
-            res.results.expire_in
-          );
+          this.storageService.store( AuthConstants.EXPIRE_IN,res.results.expire_in);
         } else {
           this.toastService.presentToast("connection failed");
         }

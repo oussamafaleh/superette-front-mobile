@@ -5,7 +5,7 @@ import { AuthConstants } from './../config/auth-constants';
 import { AuthService } from './../services/auth.service';
 import { StorageService } from './../services/storage.service';
 import { ToastService } from './../services/toast.service';
-//import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
 
 
 
@@ -33,7 +33,7 @@ export class SignupComponent implements OnInit {
         private toastService: ToastService,
         private storageService: StorageService,
         private router: Router,
-       // private fb: Facebook
+        private facebook: Facebook
     ) { }
 
     ngOnInit() {
@@ -99,10 +99,15 @@ export class SignupComponent implements OnInit {
         }
     }
 
-     /*this.fb.login(['public_profile', 'user_friends', 'email'])
-    .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
-    .catch(e => console.log('Error logging into Facebook', e));
-     this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);*/
 
-
+  
+  /*loginWithFB() {
+    this.facebook.login(['email', 'public_profile']).then((response: FacebookLoginResponse) => {
+      this.facebook.api('me?fields=id,name,email,first_name,picture.width(720).height(720).as(picture_large)', []).then(profile => {
+        this.userData = {email: profile['email'], first_name: profile['first_name'], picture: profile['picture_large']['data']['url'], username: profile['name']}
+        console.log(this.userData)
+      });
+    });
+  
+  }*/
 }

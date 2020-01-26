@@ -1,6 +1,4 @@
 import { Component, OnInit, HostBinding, HostListener } from '@angular/core';
-import { AuthService } from './../services/auth.service';
-
 @Component({
     selector: 'app-layout',
     templateUrl: './layout.component.html',
@@ -8,7 +6,7 @@ import { AuthService } from './../services/auth.service';
 })
 export class LayoutComponent implements OnInit {
     collapedSideBar: boolean;
-    public authUser: any;
+   
 
 
     @HostListener('window:scroll', ['$event'])
@@ -25,14 +23,9 @@ export class LayoutComponent implements OnInit {
         }
     }
 
-    constructor(private auth: AuthService) {}
+    constructor() {}
 
     ngOnInit() {
-        //get the user data 
-        this.auth.userData$.subscribe((res:any) => {
-            this.authUser = res;
-            });
-
         const dom: any = document.querySelector('body');
         dom.classList.remove('sidemenu-open');
         dom.classList.remove('menuactive');

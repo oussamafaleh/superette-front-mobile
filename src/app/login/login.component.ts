@@ -6,6 +6,7 @@ import { AuthService } from "./../services/auth.service";
 import { StorageService } from "./../services/storage.service";
 import { ToastService } from "./../services/toast.service";
 
+
 @Component({
     selector: "app-login",
     templateUrl: "./login.component.html",
@@ -14,7 +15,8 @@ import { ToastService } from "./../services/toast.service";
 })
 export class LoginComponent implements OnInit {
     postData = {
-        username: "",
+        token: 'MbFR335sMJL9K0Bt335sN7kcnU235sMRKT',
+        login: "",
         password: ""
     };
 
@@ -32,10 +34,10 @@ export class LoginComponent implements OnInit {
     }
 
     validateInputs() {
-        let username = this.postData.username.trim();
+        let username = this.postData.login.trim();
         let password = this.postData.password.trim();
         return (
-            this.postData.username &&
+            this.postData.login &&
             this.postData.password &&
             username.length > 0 &&
             password.length > 0
@@ -46,14 +48,15 @@ export class LoginComponent implements OnInit {
         if (this.validateInputs()) {
             this.authService.login(this.postData).subscribe(
                 (res: any) => {
-                    if (res.userData) {
+                    if (res.results.data) {
+                        console.log(res);
                         // Storing the User data.
                         this.storageService.store(
                             AuthConstants.AUTH,
                             res.userData
                         );
                         this.storageService.store("isLoggedin", "true");
-                        this.router.navigate([""]);
+                        this.router.navigate(["/Dashbord"]);
                     } else {
                         this.toastService.presentToast("incorrect password.");
                         console.log("incorrect password.");
@@ -68,7 +71,6 @@ export class LoginComponent implements OnInit {
             this.toastService.presentToast(
                 "Please enter email/username or password."
             );
-            console.log("Please enter email/username or password.");
         }
     }
 }

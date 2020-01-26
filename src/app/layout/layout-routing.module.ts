@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout.component';
-import { AuthGuard } from '../shared/guard/auth.guard';
 
 const routes: Routes = [
     {
@@ -10,15 +9,13 @@ const routes: Routes = [
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'prefix' },
             { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
-            { path: 'statistics', canActivate:[AuthGuard] , loadChildren: () => import('./statistics/statistics.module').then(m => m.StatisticsModule)},
-            { path: 'cart',  canActivate:[AuthGuard] ,loadChildren: () => import('./cart/cart.module').then(m => m.CartModule)},
-            { path: 'favorite',canActivate:[AuthGuard] , loadChildren: () => import('./favorite/favorite.module').then(m => m.FavoriteModule)},
-            { path: 'profile',canActivate:[AuthGuard] , loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)},
+            { path: 'statistics', loadChildren: () => import('./statistics/statistics.module').then(m => m.StatisticsModule)},
+            { path: 'cart', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule)},
+            { path: 'favorite', loadChildren: () => import('./favorite/favorite.module').then(m => m.FavoriteModule)},
+            { path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)},
 
         ]
     }
-
-
 ];
 
 @NgModule({
