@@ -56,15 +56,15 @@ export class LoginComponent implements OnInit {
                             res.userData
                         );
                         this.storageService.store("isLoggedin", "true");
-                        this.router.navigate(["/Dashbord"]);
+                        this.router.navigate(["/dashboard"]);
                     } else {
                         this.toastService.presentToast("incorrect password.");
                         console.log("incorrect password.");
                     }
                 },
                 (error: any) => {
-                    this.toastService.presentToast("Network Issue.");
-                    console.log("Network Issued.");
+                    this.toastService.presentToast(error.error.messages.value);
+                    console.log();
                 }
             );
         } else {

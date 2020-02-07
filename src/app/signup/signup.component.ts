@@ -5,7 +5,7 @@ import { AuthConstants } from './../config/auth-constants';
 import { AuthService } from './../services/auth.service';
 import { StorageService } from './../services/storage.service';
 import { ToastService } from './../services/toast.service';
-import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
+//import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
 
 
 
@@ -32,8 +32,8 @@ export class SignupComponent implements OnInit {
         private authService: AuthService,
         private toastService: ToastService,
         private storageService: StorageService,
-        private router: Router,
-        private facebook: Facebook
+        private router: Router
+        //private facebook: Facebook
     ) { }
 
     ngOnInit() {
@@ -80,7 +80,7 @@ export class SignupComponent implements OnInit {
                         this.storageService
                             .store(AuthConstants.AUTH, res.userData)
                             .then(res => {
-                                this.router.navigate(['/Dashbord']);
+                                this.router.navigate(['/dashbord']);
                             });
                     } else {
                         this.toastService.presentToast(
@@ -89,7 +89,8 @@ export class SignupComponent implements OnInit {
                     }
                 },
                 (error: any) => {
-                    this.toastService.presentToast('Network Issue.');
+                    this.toastService.presentToast(error.error.messages.value);
+                    console.log();
                 }
             );
         } else {

@@ -10,7 +10,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { AuthGuard } from "./shared/guard/auth.guard";
 import { IonicModule } from "@ionic/angular";
-import { Facebook, FacebookLoginResponse } from "@ionic-native/facebook/ngx";
+//import { Facebook, FacebookLoginResponse } from "@ionic-native/facebook/ngx";
 import { AuthInterceptorService } from "./services/auth-interceptor.service";
 
 @NgModule({
@@ -30,7 +30,6 @@ import { AuthInterceptorService } from "./services/auth-interceptor.service";
   providers: [
     AuthGuard,
     HttpClientModule,
-    Facebook,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
